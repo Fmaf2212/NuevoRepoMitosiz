@@ -1,0 +1,4 @@
+/* styles.module.css */
+.shadowInner {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Ejemplo de box-shadow interno */
+  }

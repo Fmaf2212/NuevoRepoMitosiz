@@ -1,0 +1,175 @@
+  {
+  "page": 1,
+  "totalPages": 5,
+  "size": 21,
+  "products": [
+    {
+      "ProductId": 150001,
+      "Name": "Mastermind Toys",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 74,
+      "Points": 7,
+      "Status": "Novedades"
+    },
+    {
+      "ProductId": 150002,
+      "Name": "Jump Rope Kids",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 68,
+      "Points": 6,
+      "Status": "50% de descuento"
+    },
+    {
+      "ProductId": 150003,
+      "Name": "Tee Ball Beanie",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.00.37 PM.png",
+      "Price": 132,
+      "Points": 13,
+      "Status": ""
+    },
+    {
+      "ProductId": 150004,
+      "Name": "Rubber Table Tennis",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 28,
+      "Points": 2,
+      "Status": "Agotado"
+    },
+    {
+      "ProductId": 150005,
+      "Name": "Classic Blue Rugby",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 42,
+      "Points": 4,
+      "Status": ""
+    },
+    {
+      "ProductId": 150006,
+      "Name": "Manhattan Toy WRT",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 30,
+      "Points": 3,
+      "Status": ""
+    },
+    {
+      "ProductId": 150007,
+      "Name": "Tabletop Football",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.18.22 PM.png",
+      "Price": 12,
+      "Points": 1,
+      "Status": "Novedades"
+    },
+    {
+      "ProductId": 150008,
+      "Name": "Pvc Catching Toy",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 145,
+      "Points": 14,
+      "Status": "Edición Limitada"
+    },
+    {
+      "ProductId": 150009,
+      "Name": "Product 9",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 99,
+      "Points": 9,
+      "Status": "Novedades"
+    },
+    {
+      "ProductId": 150010,
+      "Name": "Product 10",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.00.37 PM.png",
+      "Price": 120,
+      "Points": 12,
+      "Status": ""
+    },
+    {
+      "ProductId": 150011,
+      "Name": "Product 11",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.18.22 PM.png",
+      "Price": 55,
+      "Points": 5,
+      "Status": "50% de descuento"
+    },
+    {
+      "ProductId": 150012,
+      "Name": "Product 12",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 80,
+      "Points": 8,
+      "Status": "Agotado"
+    },
+    {
+      "ProductId": 150013,
+      "Name": "Product 13",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 65,
+      "Points": 6,
+      "Status": "50% de descuento"
+    },
+    {
+      "ProductId": 150014,
+      "Name": "Product 14",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.00.37 PM.png",
+      "Price": 150,
+      "Points": 15,
+      "Status": "Edición Limitada"
+    },
+    {
+      "ProductId": 150015,
+      "Name": "Product 15",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 35,
+      "Points": 3,
+      "Status": "50% de descuento"
+    },
+    {
+      "ProductId": 150016,
+      "Name": "Product 16",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 90,
+      "Points": 9,
+      "Status": ""
+    },
+    {
+      "ProductId": 150017,
+      "Name": "Product 17",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.00.37 PM.png",
+      "Price": 75,
+      "Points": 7,
+      "Status": "Novedades"
+    },
+    {
+      "ProductId": 150018,
+      "Name": "Product 18",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 110,
+      "Points": 11,
+      "Status": ""
+    },
+    {
+      "ProductId": 150019,
+      "Name": "Product 19",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.07.28 PM.png",
+      "Price": 48,
+      "Points": 4,
+      "Status": ""
+    },
+    {
+      "ProductId": 150020,
+      "Name": "Product 20",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.00.37 PM.png",
+      "Price": 130,
+      "Points": 13,
+      "Status": "Novedades"
+    },
+    {
+      "ProductId": 150021,
+      "Name": "Product 21",
+      "Image": "https://yosoymitosis.com/products/1-17-2024 2.15.43 PM.png",
+      "Price": 60,
+      "Points": 6,
+      "Status": "50% de descuento"
+    }
+  ]
+}

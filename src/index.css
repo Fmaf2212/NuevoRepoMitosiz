@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+@font-face {
+    font-family: 'DS-DIGIB';
+    src: url('../src/fonts/DSDIGIB/DS-DIGIB.TTF') format('truetype');
+}
+body {
+    font-family: system-ui, sans-serif; /* Utiliza system-ui como fuente principal */
+  }
