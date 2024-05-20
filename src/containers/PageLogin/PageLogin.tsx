@@ -247,7 +247,7 @@ const PageLogin: React.FC<PageLoginProps> = ({ className = "" }) => {
             </p>
             <label className="block mb-4">
               <span className="text-neutral-800 dark:text-neutral-200">
-                Usuario
+                ID
               </span>
               <Input
                 type="text"
