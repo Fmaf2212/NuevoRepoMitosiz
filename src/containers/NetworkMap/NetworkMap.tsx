@@ -601,7 +601,7 @@ const NetworkMap = () => {
           Mapa de Red
         </h2>
       </div>
-      <div className="flex flex-col md:flex-row border border-solid border-slate-200 justify-between pr-[34px] md:pr-[88px] py-4 pl-[34px] rounded-3xl shadow-lg">
+      <div className="flex flex-col md:flex-row border border-solid border-slate-200 justify-between pr-[34px] lg:pr-[88px] py-4 pl-[34px] rounded-3xl shadow-lg">
         <div className="flex flex-col w-full md:w-auto space-y-2 md:space-y-3">
           <p className="flex justify-between text-sm md:text-base">
             <span style={{ minWidth: "150px" }}>Total Empresarios:</span>
@@ -644,8 +644,8 @@ const NetworkMap = () => {
             </span>
           </p>
         </div>
-        <div id="Div1" className="flex items-center gap-5">
-          <div className="relative flex items-center w-64 h-16 rounded overflow-hidden">
+        <div id="Div1" className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5">
+          <div className="relative flex items-center w-64 h-16 mt-4 sm:mt-0 rounded overflow-hidden">
             <Select
               id="cboPeriodo"
               className="overflow-hidden text-ellipsis whitespace-nowrap"

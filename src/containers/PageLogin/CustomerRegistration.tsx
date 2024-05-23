@@ -36,9 +36,11 @@ const CustomerRegistration = () => {
       if (userAuthString) {
         const userAuth = JSON.parse(userAuthString);
         const userId = userAuth.userId;
+        const userNameUser = userAuth.names+userAuth.lastName;
+        const userNameUserSinEspacio = userNameUser.replace(' ', '');
         // const baseUrl = 'http://localhost:3000/customer-registration';
         const baseUrl = `${origin}/customer-registration`;
-        generatedUrl = `${baseUrl}?patrocinador=${userId}`;
+        generatedUrl = `${baseUrl}?patrocinador=${userId}&empresario=${userNameUserSinEspacio}`;
         // setGeneratedUrl(generatedUrl);
       } else {
         console.error('No se encontraron datos de usuario en localStorage.');
@@ -49,8 +51,10 @@ const CustomerRegistration = () => {
       if (userAuthString) {
         const userAuth = JSON.parse(userAuthString);
         const userId = userAuth.userId;
+        const userNameUser = userAuth.names+userAuth.lastName;
+        const userNameUserSinEspacio = userNameUser.replace(' ', '');
         const baseUrl = `${origin}/customer-registration`;
-        generatedUrl = `${baseUrl}?patrocinador=${userId}`;
+        generatedUrl = `${baseUrl}?patrocinador=${userId}&empresario=${userNameUserSinEspacio}`;
         //setGeneratedUrl(generatedUrl);
       } else {
         console.error('No se encontraron datos de usuario en localStorage.');

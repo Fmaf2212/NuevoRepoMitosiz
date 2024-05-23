@@ -333,7 +333,7 @@ const CustomerForm: FC<Props> = () => {
       }
       // Desactiva el botón después del primer clic
       setBotonDesactivado(true);
-      const userIdLogued = JSON.parse(localStorage.getItem("USER_AUTH")!).userId;
+      const userIdLogued = JSON.parse(localStorage.getItem("USER_AUTH")!)!! ? JSON.parse(localStorage.getItem("USER_AUTH")!).userId : null;
       // Preparar el objeto de datos para enviar al backend
       const userData = {
         typeDocument: selectedDocumentType,

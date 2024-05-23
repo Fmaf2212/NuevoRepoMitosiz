@@ -76,6 +76,13 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
 
     // Función para enviar la solicitud POST
     const handleSaveClick = async () => {
+      // Obtener el loader
+      const loader = document.getElementById('loader');
+    
+      if (loader) {
+        // Mostrar el loader
+        loader.style.display = 'block';
+      }
 
       // Verificar que los campos estén completos en el orden deseado
       if (!selectedImage) {
@@ -84,6 +91,10 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
           title: "Oops...",
           text: "Por favor, seleccione un voucher antes de guardar.",
         });
+        if (loader) {
+          // Mostrar el loader
+          loader.style.display = 'none';
+        }
         return; // Detener la ejecución de la función si falta el campo de seleccionar voucher
       }
 
@@ -93,6 +104,10 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
           title: "Oops...",
           text: "Por favor, seleccione un banco antes de guardar.",
         });
+        if (loader) {
+          // Mostrar el loader
+          loader.style.display = 'none';
+        }
         return; // Detener la ejecución de la función si falta el campo de tipo de pago
       }
 
@@ -102,6 +117,10 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
           title: "Oops...",
           text: "Por favor, ingrese el número de operación antes de guardar.",
         });
+        if (loader) {
+          // Mostrar el loader
+          loader.style.display = 'none';
+        }
         return; // Detener la ejecución de la función si falta el campo de número de operación
       }
 
@@ -111,6 +130,10 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
           title: "Oops...",
           text: "Por favor, seleccione la fecha del voucher antes de guardar.",
         });
+        if (loader) {
+          // Mostrar el loader
+          loader.style.display = 'none';
+        }
         return; // Detener la ejecución de la función si falta el campo de fecha del voucher
       }
 
@@ -157,6 +180,10 @@ const ModalContent: React.FC<ModalContentProps> = ({handleCloseModalAddVoucher, 
           })
         });
         if (response.ok) {
+          // Ocultar el loader al finalizar
+          if (loader) {
+            loader.style.display = 'none';
+          }
           // Procesar la respuesta si es necesario
           handleCloseModalAddVoucher(); // Cerrar el modal después de guardar
           Swal.fire({

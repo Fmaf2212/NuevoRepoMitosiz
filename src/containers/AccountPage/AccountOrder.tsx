@@ -315,25 +315,17 @@ const AccountOrder = () => {
     setCurrentPage(1); // Establecer la página actual a 1 al filtrar
     fetchOrders();
   };
-  const handleDownloadImage = async (fileUrl:any, fileName: any) => {
-    try {
-      const response = await fetch(fileUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+  const handleDownloadImage = async (fileUrl: any, fileName: any) => {
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.target = '_blank'; // Abre el enlace en una nueva pestaña
+    // Si deseas que se descargue automáticamente en lugar de abrirse en una nueva pestaña,
+    // puedes omitir la siguiente línea de código que establece el atributo 'download'
+    link.download = fileName || 'file';
   
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = fileName || 'file'; // Nombre de archivo por defecto si no se proporciona uno
-  
-      document.body.appendChild(link);
-      link.click(); // Simula un clic en el enlace para iniciar la descarga
-      document.body.removeChild(link);
-  
-      // Revoca el objeto URL creado para liberar recursos
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Error al descargar el archivo:', error);
-    }
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const renderOrder = (order: any) => {
