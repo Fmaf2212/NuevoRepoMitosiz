@@ -293,24 +293,73 @@ const CustomerForm: FC<Props> = ({patronId}) => {
   };
 
   const fieldsToValidate = [
-    { value: selectedDocumentType, errorMessage: 'Debe seleccionar un tipo de documento.' },
-    { value: documentValue, errorMessage: 'Debe ingresar un número de documento.' },
-    { value: nombres, errorMessage: 'Debe ingresar un nombre.' },
-    { value: apellidos, errorMessage: 'Debe ingresar un apellido.' },
-    { value: parsedFechaNacimiento, errorMessage: 'Debe ingresar su fecha de nacimiento.' },
-    { value: phone, errorMessage: 'Debe ingresar su número de celular.' },
-    { value: inputPasswordValue, errorMessage: 'Debe ingresar una contraseña.' },
-    { value: inputPassword2Value, errorMessage: 'Debe ingresar su contraseña en el campo de "Confirmar Contraseña".' },
+    { name: 'mail', value: mail, errorMessage: 'Debe ingresar un correo.' },
+    { name: 'typeDocument', value: selectedDocumentType, errorMessage: 'Debe seleccionar un tipo de documento.' },
+    { name: 'document', value: documentValue, errorMessage: 'Debe ingresar un número de documento.' },
+    { name: 'names', value: nombres, errorMessage: 'Debe ingresar un nombre.' },
+    { name: 'lastName', value: apellidos, errorMessage: 'Debe ingresar un apellido.' },
+    { name: 'birthDate', value: parsedFechaNacimiento, errorMessage: 'Debe ingresar su fecha de nacimiento.' },
+    { name: 'phone', value: phone, errorMessage: 'Debe ingresar su número de celular.' },
+    { name: 'password1', value: inputPasswordValue, errorMessage: 'Debe ingresar una contraseña.' },
+    { name: 'password2', value: inputPassword2Value, errorMessage: 'Debe ingresar su contraseña en el campo de "Confirmar Contraseña".' },
+    { name: 'country', value: idPaisSeleccionado, errorMessage: 'Debe seleccionar un Pais.' },
+    { name: 'department', value: selectedDepartment, errorMessage: 'Debe seleccionar un Departamento.' },
   ];
   function validateUserData(fields: any) {
     for (const field of fields) {
-      if (field.value === "") {
+      console.log(field);
+      if (field == null || field.value == null || field.value === 0 || field.value === "") {
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: field.errorMessage,
         });
         return false;
+      }
+      else if(field.name === "document" && field.value.length < 8){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "El documento debe tener un minimo 8 dígitos",
+        });
+        return false;
+      }
+      else if(field.name === "phone" && field.value.length < 9){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "El celular debe tener un minimo 9 dígitos",
+        });
+        return false;
+      }
+      else if(field.name === "birthDate"){
+        const birthDate = new Date(field.value);
+        const currentDate = new Date();
+        let age = currentDate.getFullYear() - birthDate.getFullYear();
+        const monthDifference = currentDate.getMonth() - birthDate.getMonth();
+        const dayDifference = currentDate.getDate() - birthDate.getDate();
+        if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+            age--;
+        }
+        if (age < 18) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Debe ser mayor de 18 años para registrarse",
+          });
+          return false;
+        }
+      }
+      else if(field.name === "mail"){
+        const emailRegex = /^[a-zA-Z0-9]+((\.|\-|_)?[a-zA-Z0-9]+)*@(gmail|hotmail|outlook|yahoo)\.(com|net|es)$/;
+        if(!emailRegex.test(field.value)){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Formato de correo incorrecto",
+          });
+          return false;
+        }
       }
     }
     return true;
@@ -377,7 +426,12 @@ const CustomerForm: FC<Props> = ({patronId}) => {
         }).then((result) => {
           if (result.isConfirmed) {
             // Redirigir al usuario al index ("/") después de hacer clic en "OK"
-            navigate("/page-virtualOffice");
+            if(valor==="valor_por_defecto"){
+              navigate("/page-virtualOffice");
+            }
+            else{
+              navigate("/login");
+            }
           }
         });
         setFechaNacimiento('1990-07-22');
@@ -586,7 +640,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">Tipo de Documento</Label>
+                <Label className="text-sm">Tipo de Documento (*)</Label>
                 <Select
                   className="mt-1.5 border-neutral-400"
                   required
@@ -599,7 +653,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
                 </Select>
               </div>
               <div>
-                <Label className="text-sm">Documento</Label>
+                <Label className="text-sm">Documento (*)</Label>
                 <Input
                   className="mt-1.5 border-neutral-400"
                   maxLength={50}
@@ -614,7 +668,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">Nombres</Label>
+                <Label className="text-sm">Nombres (*)</Label>
                 <Input
                   className="mt-1.5 border-neutral-400"
                   maxLength={150}
@@ -626,7 +680,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
                 />
               </div>
               <div>
-                <Label className="text-sm">Apellidos</Label>
+                <Label className="text-sm">Apellidos (*)</Label>
                 <Input
                   className="mt-1.5 border-neutral-400"
                   maxLength={200}
@@ -640,7 +694,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">Fecha de Nacimiento</Label>
+                <Label className="text-sm">Fecha de Nacimiento (*)</Label>
                 <div className="mt-1.5 flex">
                   <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-400 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                     <i className="text-2xl las la-calendar"></i>
@@ -658,7 +712,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
                 <pre>{JSON.stringify(parsedFechaNacimiento, null, 2)}</pre>
               </div> */}
               <div>
-                <Label className="text-sm">Correo</Label>
+                <Label className="text-sm">Correo (*)</Label>
                 <Input
                   className="mt-1.5 border-neutral-400"
                   maxLength={120}
@@ -713,7 +767,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">Contraseña</Label>
+                <Label className="text-sm">Contraseña (*)</Label>
                 <div className="relative w-[95%]">
                   <Input
                     className={`mt-1.5 border-neutral-400 ${
@@ -751,7 +805,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
                 )}
               </div>
               <div>
-                <Label className="text-sm">Confirmar Contraseña</Label>
+                <Label className="text-sm">Confirmar Contraseña (*)</Label>
                 <div className="relative w-[95%]">
                   <Input
                     className={`mt-1.5 border-neutral-400 ${
@@ -796,7 +850,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">País</Label>
+                <Label className="text-sm">País (*)</Label>
                 <Select
                   className="mt-1.5"
                   defaultValue={idPaisSeleccionado}
@@ -807,7 +861,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
                 </Select>
               </div>
               <div>
-                <Label className="text-sm">Departamento</Label>
+                <Label className="text-sm">Departamento (*)</Label>
                 <Select
                   className="mt-1.5"
                   required
@@ -888,7 +942,7 @@ const CustomerForm: FC<Props> = ({patronId}) => {
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
               <div>
-                <Label className="text-sm">Celular</Label>
+                <Label className="text-sm">Celular (*)</Label>
                 <Input
                   className="mt-1.5 border-neutral-400"
                   maxLength={20}
