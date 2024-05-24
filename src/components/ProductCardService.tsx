@@ -247,7 +247,7 @@ const ProductCardService: FC<ProductCardProps> = ({className = "",data}) => {
       <div className="flex ">
         <div className="h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
           <img
-            src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}`}
+            src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}?t=${new Date().getTime()}`}
             alt={imageName}
             className="h-full w-full object-cover object-center"
           />
