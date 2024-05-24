@@ -12,6 +12,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import PageLogin from "containers/PageLogin/PageLogin";
+import CustomerRegistration from "containers/PageLogin/CustomerRegistration";
 // import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/page-collection",
     element: <PageCollection />
+  },
+  {
+    path:"/customer-registration/:patrocinador/:empresario",
+    element:<CustomerRegistration />
   },
 ])
 

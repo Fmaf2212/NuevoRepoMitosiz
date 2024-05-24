@@ -5,6 +5,7 @@ import { Product, PRODUCTS } from "data/data";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import Input from "shared/Input/Input";
 import ContactInfo from "../PageCheckout/ContactInfo";
@@ -14,6 +15,7 @@ import CustomerForm from "./CustomerForm";
 import Swal from "sweetalert2";
 
 const CustomerRegistration = () => {
+  const { namePatron, patronId } = useParams<{ namePatron?: string, patronId?: string }>();
   const [tabActive, setTabActive] = useState<
     "ContactInfo" | "ShippingAddress" | "PaymentMethod"
   >("ShippingAddress");
@@ -39,8 +41,8 @@ const CustomerRegistration = () => {
         const userNameUser = userAuth.names+userAuth.lastName;
         const userNameUserSinEspacio = userNameUser.replace(' ', '');
         // const baseUrl = 'http://localhost:3000/customer-registration';
-        const baseUrl = `${origin}/customer-registration`;
-        generatedUrl = `${baseUrl}?patrocinador=${userId}&empresario=${userNameUserSinEspacio}`;
+        const baseUrl = `${origin}/Registro`;
+        generatedUrl = `${baseUrl}/${userNameUserSinEspacio}/${userId}`;
         // setGeneratedUrl(generatedUrl);
       } else {
         console.error('No se encontraron datos de usuario en localStorage.');
@@ -53,8 +55,8 @@ const CustomerRegistration = () => {
         const userId = userAuth.userId;
         const userNameUser = userAuth.names+userAuth.lastName;
         const userNameUserSinEspacio = userNameUser.replace(' ', '');
-        const baseUrl = `${origin}/customer-registration`;
-        generatedUrl = `${baseUrl}?patrocinador=${userId}&empresario=${userNameUserSinEspacio}`;
+        const baseUrl = `${origin}/Registro`;
+        generatedUrl = `${baseUrl}/${userNameUserSinEspacio}/${userId}`;
         //setGeneratedUrl(generatedUrl);
       } else {
         console.error('No se encontraron datos de usuario en localStorage.');
@@ -232,7 +234,7 @@ const CustomerRegistration = () => {
     return (
       <div className="space-y-8">
         <div id="ShippingAddress" className="scroll-mt-24">
-          <CustomerForm />
+          <CustomerForm patronId={patronId} />
         </div>
       </div>
     );

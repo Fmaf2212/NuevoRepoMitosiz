@@ -38,7 +38,7 @@ const MainNav2Logged = () => {
           {/* ES LA LUPA, ICONO USUARIO Y CARRITO */}
           {isLoggedIn
           ?
-          <Link to={"/customer-registration"}>
+          <Link to={"/Registro"}>
             <div className="w-7 mx-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
                 <path d="M37.1,5.22h-2v-2c0-0.5-0.4-0.9-0.9-0.9c-0.5,0-0.9,0.4-0.9,0.9v2h-2c-0.5,0-0.9,0.4-0.9,0.9c0,0.5,0.4,0.9,0.9,0.9h2v2c0,0.5,0.4,0.9,0.9,0.9c0.5,0,0.9-0.4,0.9-0.9V7h2C37.6,7,38,6.6,38,6.1s-0.4-0.9-0.9-0.9l0,0V5.22z" fill="white" />

@@ -20,7 +20,9 @@ import { useCounterStore } from "store/auth";
 import iconEyeVisible from "../../images/iconEye-visible.png"
 import iconEyeInvisible from "../../images/iconEye-invisible.png"
 
-interface Props { }
+interface Props { 
+  patronId?: string;
+}
 
 type OptionsMap = {
   [key: string]: string;
@@ -31,8 +33,7 @@ interface StoresForShoppingData {
   storeName: string;
 }
 
-
-const CustomerForm: FC<Props> = () => {
+const CustomerForm: FC<Props> = ({patronId}) => {
   const navigate = useNavigate();
   const [fechaNacimiento, setFechaNacimiento] = useState('');
   const [img, setImg] = useState({});
@@ -76,12 +77,14 @@ const CustomerForm: FC<Props> = () => {
   const dataIsLoggedIn = useCounterStore((state) => state.dataIsLoggedIn);
   const valor = localStorage.getItem('USER_AUTH') ?? 'valor_por_defecto';
   const queryParams = new URLSearchParams(window.location.search);
-  const patrocinador = queryParams.get('patrocinador');
+  // const patrocinador = queryParams.get('patrocinador');
+  const patrocinador = patronId;
   useEffect(() => {
     // Verificar si el usuario está autenticado y si existe el parámetro 'patrocinador' con un valor válido
   if (valor === 'valor_por_defecto') {
     const urlParams = new URLSearchParams(window.location.search);
-    const patrocinador = urlParams.get('patrocinador');
+    // const patrocinador = urlParams.get('patrocinador');
+    const patrocinador = patronId;
     
     if (!patrocinador || !patrocinador.trim()||isNaN(Number(patrocinador))) {
       // Si el parámetro 'patrocinador' no existe o su valor es null o vacío, redirigir al Login
@@ -314,6 +317,7 @@ const CustomerForm: FC<Props> = () => {
   }
 
   const handleRegister = async () => {
+    console.log(patronId);
     if (selectedFileName === "") {//si NO se ingresa una imagen
       if (!validateUserData(fieldsToValidate)) {//Validaciones
         return;
@@ -334,6 +338,7 @@ const CustomerForm: FC<Props> = () => {
       // Desactiva el botón después del primer clic
       setBotonDesactivado(true);
       const userIdLogued = JSON.parse(localStorage.getItem("USER_AUTH")!)!! ? JSON.parse(localStorage.getItem("USER_AUTH")!).userId : null;
+      
       // Preparar el objeto de datos para enviar al backend
       const userData = {
         typeDocument: selectedDocumentType,

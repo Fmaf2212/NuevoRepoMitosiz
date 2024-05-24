@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 
-export interface LocationStates {
+interface StaticLocationStates {
   "/"?: {};
   "null"?: {};
   "/home2"?: {};
@@ -28,7 +28,6 @@ export interface LocationStates {
   "/about"?: {};
   "/contact"?: {};
   "/login"?: {};
-  "/customer-registration"?: {};
   "/signup"?: {};
   "/forgot-pass"?: {};
   "/page404"?: {};
@@ -37,6 +36,14 @@ export interface LocationStates {
   "/commissions"?: {};
   "/page-information"?: {};
 }
+
+// Definir una interfaz para las rutas dinámicas
+interface DynamicLocationStates {
+  "/Registro"?: {namePatron?: string; patronId?: string};
+}
+
+// Combinar las interfaces de rutas estáticas y dinámicas
+export interface LocationStates extends StaticLocationStates, DynamicLocationStates {}
 let locationKey: null | keyof LocationStates;
 locationKey = null;
 export type PathName = keyof LocationStates;

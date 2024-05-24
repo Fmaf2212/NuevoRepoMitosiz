@@ -39,50 +39,32 @@ import { useCounterStore } from "store/auth";
 import NetworkMap from "containers/NetworkMap/NetworkMap";
 import Commissions from "containers/PageCommissions/Commissions";
 
+interface DynamicRoute {
+  path: string; // Este sería el patrón para las rutas dinámicas
+  component: React.ComponentType<any>;
+}
+
 export const pages: Page[] = [
   { path: "/", component: PageHome },
-  // { path: "/home2", component: PageHome2 },
-  // { path: "/home3", component: PageHome3 },
-  //
-  // { path: "/home-header-2", component: PageHome },
-  // { path: "/product-detail", component: ProductDetailPage },
-  // { path: "/product-detail-2", component: ProductDetailPage2 },
-  //
-  // { path: "/page-collection-2", component: PageCollection2 },
   { path: "/page-collection", component: PageCollection },
   { path: "/page-virtualOffice", component: PageVirtualOffice },
-  // {
-  //   path: "/",
-  //   component: ProtectedRoute,
-  //   children: [
-  //     { path: "/page-collection", component: PageCollection },
-  //   ],
-  // },
-  // { path: "/page-search", component: PageSearch },
-  //
   { path: "/account", component: AccountPage },
   { path: "/editProfile", component: EditProfile },
-  // { path: "/account-savelists", component: AccountSavelists },
-  // { path: "/account-change-password", component: AccountPass },
-  // { path: "/account-billing", component: AccountBilling },
   { path: "/account-my-order", component: AccountOrder },
   { path: "/mypurchases", component: MyPurchases },
-  //
   { path: "/cart", component: CartPage },
-  // { path: "/checkout", component: CheckoutPage },
-  //
-  // { path: "/blog", component: BlogPage },
-  // { path: "/blog-single", component: BlogSingle },
-  //
   { path: "/contact", component: PageContact },
   { path: "/about", component: PageAbout },
   { path: "/signup", component: PageSignUp },
   { path: "/login", component: PageLogin },
-  { path: "/customer-registration", component: CustomerRegistration },
+  // { path: "/customer-registration/:patrocinador/:empresario", component: CustomerRegistration },
   { path: "/network-map", component: NetworkMap },
   { path: "/commissions", component: Commissions },
   { path: "/page-information", component: PageInformation },
-  // { path: "/subscription", component: PageSubcription },
+];
+
+const dynamicRoutes: DynamicRoute[] = [
+  { path: "/Registro/:namePatron?/:patronId?", component: CustomerRegistration },
 ];
 
 const MyRoutes = () => {
@@ -134,6 +116,9 @@ const MyRoutes = () => {
       <Routes>
         {pages.map(({ component: Component, path }, index ) => {
           return <Route key={index} element={<Component />} path={path} />;
+        })}
+        {dynamicRoutes.map(({ component: Component, path }, index) => {
+        return <Route key={index} element={<Component />} path={path} />;
         })}
         <Route path="*" element={<Page404 />} />
       </Routes>
