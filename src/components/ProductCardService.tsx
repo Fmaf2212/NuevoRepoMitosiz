@@ -20,7 +20,7 @@ import loadingGif from  "../images/loading.gif"
 
 export interface ProductCardProps {
   className?: string;
-  data?: Product;
+  data?: Product2;
 }
 
 interface Producto {
@@ -31,7 +31,19 @@ interface Producto {
   // Otros campos relevantes
 }
 
+interface Product2 {
+  productId: number;
+  productName: string;
+  imageName: string;
+  price: number;
+  activationPoints: number;
+  networkPoints: number;
+  discount: number;
+}
+
+
 const ProductCardService: FC<ProductCardProps> = ({className = "",data}) => {
+  console.log(data);
   const [showModalQuickView, setShowModalQuickView] = useState(false);
   const [loading, setLoading] = useState(true);
   const { addToCart, updateCartItemCount } = useStore();
@@ -52,7 +64,6 @@ const ProductCardService: FC<ProductCardProps> = ({className = "",data}) => {
     </div>; // Puedes mostrar un spinner o un mensaje de carga mientras se obtienen los datos
   }
   const { productId, productName, price, imageName, activationPoints, networkPoints } = data || newArrayFormat[0];
-
   const isLogued = localStorage.getItem('USER_AUTH')!!;
 
   const handleAddToCart = async () => {
@@ -307,7 +318,7 @@ const ProductCardService: FC<ProductCardProps> = ({className = "",data}) => {
         <div className="relative flex-shrink-0 bg-slate-50 dark:bg-slate-300 rounded-3xl overflow-hidden z-1 group">
           <NcImage
             containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0"
-            src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}`}
+            src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}?t=${new Date().getTime()}`}
             className="object-scale-down w-full h-full drop-shadow-xl"
           />
           {renderGroupButtons()}

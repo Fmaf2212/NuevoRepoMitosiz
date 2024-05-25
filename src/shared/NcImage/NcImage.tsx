@@ -10,8 +10,8 @@ import PlaceIcon from "./PlaceIcon";
 
 export interface NcImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   containerClassName?: string;
+  src?: string;
 }
-
 const NcImage: FC<NcImageProps> = ({
   containerClassName = "",
   alt = "nc-imgs",
@@ -19,6 +19,7 @@ const NcImage: FC<NcImageProps> = ({
   className = "object-cover w-full h-full",
   ...args
 }) => {
+console.log('ini'+src);
   const _containerRef = useRef(null);
   let _imageEl: HTMLImageElement | null = null;
 
@@ -58,6 +59,7 @@ const NcImage: FC<NcImageProps> = ({
   };
 
   useEffect(() => {
+    console.log("useeffect");
     _checkInViewPort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
@@ -80,8 +82,8 @@ const NcImage: FC<NcImageProps> = ({
       data-nc-id="NcImage"
       ref={_containerRef}
     >
-      {__src && imageLoaded ? (
-        <img src={__src} className={className} alt={alt} {...args} />
+      {src && imageLoaded ? (
+        <img src={src} className={className} alt={alt} {...args} />
       ) : (
         renderLoadingPlaceholder()
       )}
