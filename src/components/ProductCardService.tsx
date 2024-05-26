@@ -305,11 +305,14 @@ const ProductCardService: FC<ProductCardProps> = ({className = "",data}) => {
         {/* <Link to={"/product-detail"} className="absolute inset-0"></Link> */}
 
         <div className="relative flex-shrink-0 bg-slate-50 dark:bg-slate-300 rounded-3xl overflow-hidden z-1 group">
-          <NcImage
+          {/* <NcImage
             containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0"
             src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}`}
             className="object-scale-down w-full h-full drop-shadow-xl"
-          />
+          /> */}
+          <div className="flex aspect-w-11 aspect-h-12 w-full h-0">
+            <img className="object-scale-down w-full drop-shadow-xl h-full" src={`https://api.yosoymitosis.com/StaticFiles/ProductsImg/${imageName}`} alt={'image'} />
+          </div>
           {renderGroupButtons()}
         </div>
 
