@@ -39,6 +39,8 @@ import { useCounterStore } from "store/auth";
 import NetworkMap from "containers/NetworkMap/NetworkMap";
 import Commissions from "containers/PageCommissions/Commissions";
 
+import SessionTimeout from "SessionTimeout";
+
 interface DynamicRoute {
   path: string; // Este sería el patrón para las rutas dinámicas
   component: React.ComponentType<any>;
@@ -108,8 +110,12 @@ const MyRoutes = () => {
   //   onLogin: handleLogin,
   //   onLogout: handleLogout
   // };
+
+  const sessionTimeoutDuration = 5 * 60 * 1000; // 5 minutos
   return (
     <BrowserRouter>
+    
+      <SessionTimeout timeoutDuration={sessionTimeoutDuration} />
       <Toaster />
       <ScrollToTop />
       <SiteHeader />

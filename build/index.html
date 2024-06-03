@@ -1,1 +1,35 @@
-<base href="./"/><!doctype html><html lang="es"><head><meta charset="utf-8"/><link rel="icon" href="./favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="./logo192.png"/><link rel="manifest" href="./manifest.json"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"><title>React App</title><script defer="defer" src="./static/js/main.2477b8d9.js"></script><link href="./static/css/main.863043c3.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="loader" class="fixed left-0 top-0 w-full h-full z-[9999] bg-black/[.5] bg-center bg-no-repeat hidden" style="background-image:url('./loading.gif')"></div><div id="root"></div></body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Web site created using create-react-app"/>
+    <link rel="apple-touch-icon" href="/logo192.png"/>
+    <link rel="manifest" href="/manifest.json"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet"/>
+    <title>React App</title>
+    <script defer="defer" src="/static/js/main.413794b9.js"></script>
+    <link href="/static/css/main.91c37eb5.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loader" class="fixed left-0 top-0 w-full h-full z-[9999] bg-black/[.5] bg-center bg-no-repeat hidden" style="background-image:url('./loading.gif')"></div>
+    <div id="root"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var baseElement = document.createElement('base');
+            console.log(window.location.hostname);
+            if (window.location.hostname === 'localhost') {
+                baseElement.href = '/';
+            } else if (window.location.hostname === 'yosoymitosiz.com') {
+                baseElement.href = 'https://www.yosoymitosiz.com/';
+                baseElement.target = '_blank';
+            }
+            document.head.appendChild(baseElement);
+        });
+	  </script>
+  </body>
+</html>

@@ -12,7 +12,6 @@ function App() {
           content="Mitosiz || Shop - eCommerce React template"
         />
       </Helmet>
-
       {/* MAIN APP */}
       <div className="bg-white text-base dark:bg-slate-900 text-slate-900 dark:text-slate-200">
         <MyRouter />
