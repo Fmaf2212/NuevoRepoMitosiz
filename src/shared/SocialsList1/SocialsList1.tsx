@@ -1,19 +1,21 @@
 import { SocialType } from "shared/SocialsShare/SocialsShare";
 import React, { FC } from "react";
 import facebook from "images/socials/facebook.svg";
-import twitter from "images/socials/twitter.svg";
-import telegram from "images/socials/telegram.svg";
-import youtube from "images/socials/youtube.svg";
+// import twitter from "images/socials/twitter.svg";
+// import telegram from "images/socials/telegram.svg";
+// import youtube from "images/socials/youtube.svg";
+import instagram from "images/socials/instagram.png";
 
 export interface SocialsList1Props {
   className?: string;
 }
 
 const socials: SocialType[] = [
-  { name: "Facebook", icon: facebook, href: "#" },
-  { name: "Youtube", icon: youtube, href: "#" },
-  { name: "Telegram", icon: telegram, href: "#" },
-  { name: "Twitter", icon: twitter, href: "#" },
+  { name: "Facebook", icon: facebook, href: "https://www.facebook.com/profile.php?id=61555571203576" },
+  // { name: "Youtube", icon: youtube, href: "#" },
+  // { name: "Telegram", icon: telegram, href: "#" },
+  // { name: "Twitter", icon: twitter, href: "#" },
+  { name: "Instagram", icon: instagram, href: "https://www.instagram.com/mitosiz.pe/?hl=es" },
 ];
 
 const SocialsList1: FC<SocialsList1Props> = ({ className = "space-y-3" }) => {
@@ -21,7 +23,7 @@ const SocialsList1: FC<SocialsList1Props> = ({ className = "space-y-3" }) => {
     return (
       <a
         href={item.href}
-        className="flex items-center text-2xl text-white hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
+        className="flex items-center text-2xl text-white hover:text-[#FFCE00] transition-colors dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
         key={index}
       >
         <div className="flex-shrink-0 w-5 ">

@@ -2,18 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "images/logo.svg";
 import logoLightImg from "images/logo-light.svg";
+import logoLightV2Img from "images/logo-light-v2.png";
 
 import {useCounterStore} from '../../store/auth'
 
 export interface LogoProps {
   img?: string;
   imgLight?: string;
+  imgLightv2?: string;
   className?: string;
 }
 
 const Logo: React.FC<LogoProps> = ({
-  img = logoLightImg,
+  // img = logoLightImg,
   imgLight = logoImg,
+  imgLightv2= logoLightV2Img,
   className = "flex-shrink-0",
 }) => {
   const isLogued = localStorage.getItem("USER_AUTH")!!;
@@ -24,12 +27,12 @@ const Logo: React.FC<LogoProps> = ({
     >
       {/* THIS USE FOR MY CLIENT */}
       {/* PLEASE UN COMMENT BELLOW CODE AND USE IT */}
-      {img ? (
+      {imgLightv2 ? (
         <img
           className={`block max-h-8 sm:max-h-10 ${
             imgLight ? "dark:hidden" : ""
           }`}
-          src={img}
+          src={imgLightv2}
           alt="Logo"
         />
       ) : (

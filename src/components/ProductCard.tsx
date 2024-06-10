@@ -231,8 +231,6 @@ const ProductCard: FC<ProductCardProps> = ({
   //     </div>
   //   );
   // };
-  console.log(imageName)
-  console.log(description)
   return (
     <>
       <div

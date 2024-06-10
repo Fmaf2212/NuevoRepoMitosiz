@@ -149,11 +149,20 @@ const NetworkMap = () => {
             tr.id = "tr" + item.userId;
             userIdEvaluation = item.userId;
             const displayStyle = item.userId === 0 ? "none" : "";
-            const colorStyle = item.pp < 30 ? "red" : "inherit";
-
+            // const colorStyle = item.pp < 30 ? "red" : "inherit";
+            // Determina el color y el estilo de la fila basado en item.pp
+            if (item.pp < 30) {
+              tr.style.color = "red";
+            } else if (item.pp > 150) {
+              tr.style.color = "#6800d1";
+              tr.style.fontWeight = "bold";
+            } else {
+              tr.style.color = "inherit";
+              tr.style.fontWeight = "normal";
+            }
             // Crea la fila y sus celdas
             // const row = document.createElement("tr");
-            tr.style.color = colorStyle;
+            // tr.style.color = colorStyle;
 
             const cell1 = document.createElement("td");
             cell1.style.display = displayStyle;
@@ -181,15 +190,15 @@ const NetworkMap = () => {
 
             tr.innerHTML =
               "<td>" +
-              '<button style="outline: none; box-shadow: none" id="btn' +
-              item.userId +
-              '" style="' +
-              displayStyle +
-              '" value="red" type="button" title="red" class="btn style-button-red btn-redU"><label style="cursor: pointer;" id="sig' +
-              item.userId +
-              '"/></button>&nbsp;<label id="lbl' +
-              item.userId +
-              '">0</label>' +
+              (item.networkQuantity > 0
+                ? '<button style="outline: none; box-shadow: none" id="btn' +
+                  item.userId +
+                  '" value="red" type="button" title="red" class="btn style-button-red btn-redU"><label style="cursor: pointer;" id="sig' +
+                  item.userId +
+                  '"/></button>': "")+'&nbsp;<label id="lbl' +
+                  item.userId +
+                  '">0</label>'
+                 +
               "</td>" +
               "<td>" +
               item.userId +
@@ -231,9 +240,7 @@ const NetworkMap = () => {
           });
           // Agrega la fila a la tabla
           tbody_red!.appendChild(tr);
-          const sigLabel = document.getElementById(
-            "sig" + response.data.data.userNetwork.userId
-          );
+          const sigLabel = document.getElementById("sig" + response.data.data.userNetwork.userId);
           if (sigLabel) {
             sigLabel.textContent = "▼";
           }
@@ -346,8 +353,17 @@ const NetworkMap = () => {
               }else{
                 display = "margin-left: -9px;outline: none;box-shadow: none;";
               }
-              const colorStyle = element.pp < 30 ? "red" : "inherit";
-              tr.style.color = colorStyle;
+              // const colorStyle = element.pp < 30 ? "red" : "inherit";
+              // Determina el color y el estilo de la fila basado en item.pp
+              if (element.pp < 30) {
+                tr.style.color = "red";
+              } else if (element.pp > 150) {
+                tr.style.color = "#6800d1";
+                tr.style.fontWeight = "bold";
+              } else {
+                tr.style.color = "inherit";
+                tr.style.fontWeight = "normal";
+              }
 
               tr.id = "tr" + element.userId;
               tr.innerHTML = '<td>' + '<button id="btn' + element.userId + '" style="' + display + '" value="red" type="button" title="red" class="btn btn-ft style-button-red btn-redU"><label style="cursor: pointer" id="sig' + element.userId + '"/></button>&nbsp;<label style="' + style + '" id="lbl' + element.userId + '">' + linea + '</label>' + '</td>' +

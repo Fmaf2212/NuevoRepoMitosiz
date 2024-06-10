@@ -79,8 +79,8 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <div className="nc-Footer bg-gradient-to-l from-purple-600 via-purple-600 to-[#F7D909] relative py-20 lg:pt-28 lg:pb-24 border-t border-neutral-200 dark:from-gray-800 dark:via-gray-600 dark:to-gray-400">
-      <div className="container grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-x-10 ">
+    <div className="nc-Footer bg-gradient-to-r from-[#653EFF] via-[#6800D1] to-[#3A0C7F]  relative py-20 lg:pt-28 lg:pb-24 border-t border-neutral-200 dark:from-gray-800 dark:via-gray-600 dark:to-gray-400">
+      {/* <div className="container grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-x-10 ">
         <div className="grid grid-cols-4 gap-5 col-span-2 md:col-span-4 lg:md:col-span-1 lg:flex lg:flex-col">
           <div className="col-span-2 md:col-span-1">
             <Logo />
@@ -90,7 +90,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
         {widgetMenus.map(renderWidgetMenuItem)}
+      </div> */}
+      <div className="container flex flex-col justify-center items-center">
+        <div className="grid grid-cols-4 gap-5 col-span-2 md:col-span-4 lg:md:col-span-1 lg:flex lg:flex-col">
+          <div className="col-span-2 md:col-span-1 text-center">
+            <Logo />
+          </div>
+          <div className="col-span-2 flex items-center md:col-span-3">
+            <SocialsList1 className="flex items-center space-x-2 justify-center gap-4" />
+          </div>
+        </div>
       </div>
+      
+      <div className="absolute left-1/2 bottom-2 transform -translate-x-1/2 text-white">
+            &copy; 2024 Mitosiz. Todos los derechos reservados.
+          </div>
     </div>
   );
 };
